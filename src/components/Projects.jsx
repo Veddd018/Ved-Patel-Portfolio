@@ -14,8 +14,16 @@ const Projects = () => {
       title: "Portfolio Website",
       description: "A responsive, highly interactive personal portfolio website to showcase my projects and technical skills.",
       techStack: ["React", "Tailwind CSS", "Framer Motion", "Vite"],
-      liveLink: "https://example.com",
-      githubLink: "https://github.com"
+      liveLink: "https://veddd018.github.io/Ved-Patel-Portfolio/",
+      githubLink: "https://veddd018.github.io/Ved-Patel-Portfolio/"
+    },
+    {
+      id: 5,
+      title: "Nevsora",
+      description: "A corporate website for an IT consulting and digital marketing company, showcasing services, solutions, and client offerings through a clean, professional interface.",
+      techStack: ["React", "Tailwind CSS", "Framer Motion", "Vite"],
+      liveLink: "https://www.nevsora.com",
+      githubLink: "https://www.nevsora.com"
     },
     {
       id: 1,

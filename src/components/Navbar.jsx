@@ -27,6 +27,17 @@ const Navbar = ({ isReady = true }) => {
     }
   }, []);
 
+  useEffect(() => {
+    if (isOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = '';
+    }
+    return () => {
+      document.body.style.overflow = '';
+    };
+  }, [isOpen]);
+
   const toggleDark = () => {
     if (isDark) {
       document.documentElement.classList.remove('dark');
@@ -48,14 +59,15 @@ const Navbar = ({ isReady = true }) => {
   ];
 
   return (
-    <nav 
-      className={`fixed top-0 w-full z-50 transition-all duration-700 ease-out ${
-        isReady ? "opacity-100 translate-y-0" : "opacity-0 -translate-y-8"
-      } ${
-        isScrolled ? 'bg-white/90 dark:bg-slate-900/90 backdrop-blur-md shadow-lg py-4' : 'bg-transparent py-6'
-      }`}
-    >
-      <div className="max-w-6xl mx-auto px-4 flex justify-between items-center">
+    <>
+      <nav 
+        className={`fixed top-0 w-full z-50 transition-all duration-700 ease-out ${
+          isReady ? "opacity-100 translate-y-0" : "opacity-0 -translate-y-8"
+        } ${
+          isScrolled ? 'bg-white/90 dark:bg-slate-900/90 backdrop-blur-md shadow-lg py-4' : 'bg-transparent py-6'
+        }`}
+      >
+        <div className="max-w-6xl mx-auto px-4 flex justify-between items-center">
         <h1 
           className="text-2xl font-bold transition-colors text-slate-900 dark:text-white"
           onMouseEnter={mouseEnterLink}
@@ -100,34 +112,35 @@ const Navbar = ({ isReady = true }) => {
           </button>
           
           <button 
-            className={`relative focus:outline-none z-50 transition-colors ${isOpen ? 'text-white' : 'text-slate-900 dark:text-white'}`}
+            className="relative focus:outline-none z-50 transition-colors text-slate-900 dark:text-white"
             onClick={() => setIsOpen(!isOpen)}
             aria-label="Toggle Menu"
           >
             {isOpen ? <X size={28} /> : <Menu size={28} />}
           </button>
         </div>
-
-        {/* Mobile Menu Overlay */}
-        <div 
-          className={`fixed inset-0 bg-slate-900/95 backdrop-blur-lg transform transition-transform duration-300 md:hidden flex flex-col items-center justify-center space-y-8 ${
-            isOpen ? 'translate-x-0' : 'translate-x-full'
-          }`}
-          style={{ zIndex: 40 }}
-        >
-          {navLinks.map((link) => (
-            <a 
-              key={link.name}
-              href={link.href} 
-              className="text-2xl font-bold text-white hover:text-blue-500 transition-colors"
-              onClick={() => setIsOpen(false)}
-            >
-              {link.name}
-            </a>
-          ))}
         </div>
+      </nav>
+
+      {/* Mobile Menu Overlay */}
+      <div 
+        className={`fixed top-0 left-0 w-full h-screen bg-white/95 dark:bg-slate-900/95 backdrop-blur-lg transform transition-transform duration-300 md:hidden flex flex-col items-center justify-center space-y-8 ${
+          isOpen ? 'translate-x-0' : 'translate-x-full'
+        }`}
+        style={{ zIndex: 40 }}
+      >
+        {navLinks.map((link) => (
+          <a 
+            key={link.name}
+            href={link.href} 
+            className="text-2xl font-bold text-slate-900 dark:text-white hover:text-blue-600 dark:hover:text-blue-500 transition-colors"
+            onClick={() => setIsOpen(false)}
+          >
+            {link.name}
+          </a>
+        ))}
       </div>
-    </nav>
+    </>
   );
 };
 
