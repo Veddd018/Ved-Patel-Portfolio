@@ -10,12 +10,12 @@ const About = () => {
   const transitionConfig = { duration: 0.6, ease: "easeOut" };
 
   return (
-    <section 
-      id="about" 
+    <section
+      id="about"
       className="py-24 bg-white dark:bg-slate-900 overflow-hidden min-h-[80vh] flex flex-col justify-center relative cursor-default"
     >
       <div className="max-w-6xl mx-auto px-4 w-full relative">
-        
+
         {/* Animated Heading */}
         <motion.div
           className="w-full text-center z-10 mb-12 md:mb-16"
@@ -30,10 +30,10 @@ const About = () => {
 
         {/* Content Wrapper */}
         <div className="w-full max-w-4xl mx-auto">
-          
+
           {/* Bio and Quick Facts */}
           <div className="w-full text-center">
-            <motion.h3 
+            <motion.h3
               className="text-2xl md:text-4xl font-bold mb-8 text-slate-800 dark:text-slate-100 leading-tight"
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -43,7 +43,7 @@ const About = () => {
               I build modern web experiences that blend Frontend Design, Vibe Coding, and AI-powered solutions.
             </motion.h3>
 
-            <motion.p 
+            <motion.p
               className="text-lg md:text-xl text-slate-600 dark:text-slate-400 leading-relaxed mb-12 max-w-3xl mx-auto"
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -55,8 +55,8 @@ const About = () => {
 
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-8 max-w-2xl mx-auto">
               {quickFacts.map((fact, index) => (
-                <motion.div 
-                  key={index} 
+                <motion.div
+                  key={index}
                   className="bg-slate-50 dark:bg-slate-800/50 p-8 rounded-2xl border border-slate-100 dark:border-slate-700 hover:shadow-lg transition-shadow duration-300 flex flex-col items-center text-center hover:-translate-y-1 transform"
                   initial={{ opacity: 0, y: 30 }}
                   whileInView={{ opacity: 1, y: 0 }}
@@ -70,7 +70,6 @@ const About = () => {
               ))}
             </div>
           </div>
-
         </div>
       </div>
     </section>
